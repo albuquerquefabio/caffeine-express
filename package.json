@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "nodemon src/server.ts",
     "build": "sucrase ./src -d ./dist --transforms typescript,imports",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docker:build": "docker build --pull --rm -f Dockerfile -t caffeineexpress:latest .",
+    "docker:up": "docker-compose -f docker-compose.yml up -d --build"
   },
   "repository": {
     "type": "git",
