@@ -1,6 +1,18 @@
 import express from 'express'
-const app = express()
-const port = 3000
+import expressConfig from './lib/express'
+import mongoConnect from './lib/mongo'
+import dotenv from 'dotenv'
 
-app.get('/', (req, res) => res.send('Hello World!'))
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+dotenv.config()
+
+const app = express()
+
+const port = Number(process.env.PORT) || 3000
+const host = process.env.HOST || 'localhost'
+
+expressConfig(app)
+mongoConnect()
+
+app.listen(port, host, () =>
+  console.log(`App listening on port http://${host}:${port}`)
+)
