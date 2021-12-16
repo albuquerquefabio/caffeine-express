@@ -38,3 +38,7 @@ pnpm build
 pnpm docker:build # to build image
 pnpm docker:up # to compose up
 ```
+
+# TODO
+
+[] Add Socket.io
