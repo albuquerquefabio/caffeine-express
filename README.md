@@ -41,4 +41,4 @@ pnpm docker:up # to compose up
 
 # TODO
 
-[] Add Socket.io
+[ ] Add Socket.io

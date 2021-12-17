@@ -3,6 +3,7 @@ import expressConfig from './lib/express'
 import mongoConnect from './lib/mongo'
 import dotenv from 'dotenv'
 import { router } from './api/router'
+import { socketServer } from './lib/socket'
 
 dotenv.config()
 
@@ -15,6 +16,8 @@ expressConfig(app)
 mongoConnect()
 router(app)
 
-app.listen(port, host, () =>
+const server = app.listen(port, host, () =>
   console.log(`App listening on port http://${host}:${port}`)
 )
+// Socket running at the same server's host and port
+socketServer.connect(server, { port, host })

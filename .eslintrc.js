@@ -11,6 +11,6 @@ module.exports = {
   },
   plugins: ['@typescript-eslint'],
   rules: {
-    'space-before-function-paren': false
+    'space-before-function-paren': 0
   }
 }
