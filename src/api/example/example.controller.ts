@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { Model } from 'mongoose'
+import { io } from '../../lib/socket'
 import { IExample } from '../../types/example.type'
 import exampleModel from './example.model'
 
@@ -39,6 +39,10 @@ export const exampleCtrl = {
     const { title, description = '' }: IExample = req.body
     try {
       const stmt = await exampleModel.create({ title, description })
+
+      // Send to all socket client listen example:create
+      io.emit('example:create', stmt)
+
       res.send(stmt)
     } catch (error) {
       res.status(500).send({ error: `${error}` })
@@ -99,6 +103,7 @@ export const exampleCtrl = {
     const { id } = req.params
     const obj = Object.fromEntries(
       Object.entries(req.body).filter(
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         ([key, val]) => key === 'title' || key === 'description'
       )
     )
