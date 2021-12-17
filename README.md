@@ -41,4 +41,8 @@ pnpm docker:up # to compose up
 
 # TODO
 
-[ ] Add Socket.io
+- [x] Add Socket.io
+- [ ] Redis Connection
+- [ ] Redis API prepare
+- [ ] Redis Socket.io Adapter
+- [ ] Redis Socket.io Emitter
